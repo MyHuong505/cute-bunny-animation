@@ -5,6 +5,7 @@ import Lottie from 'react-lottie';
 import styled from "styled-components";
 import bunnyCry from "./animations/bunnyCry.json";
 import bunnyPlease from "./animations/bunnyPlease.json";
+import bunnyYes from "./animations/bunnyYes.json"
 import Button from "./components/Button";
 
 const getRandomPosition = () => {
@@ -25,25 +26,23 @@ function Home() {
   const bunnyCryOptions = {
     loop: true,
     autoplay: true,
-    animationData: bunnyCry,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
+    animationData: bunnyCry
   };
   const bunnyPleaseOptions = {
     loop: true,
     autoplay: true,
-    animationData: bunnyPlease,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
+    animationData: bunnyPlease
+  };
+  const bunnyYesOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: bunnyYes
   };
 
   const [bunnyState, setBunnyState] = useState("normal")
   const [hovered, setHovered] = useState(false);
   const [randomPosition, setRandomPosition] = useState(getRandomPosition());
   const [hasStarted, setHasStarted] = useState(false)
-
   const bunnyObj: { [key: number]: string } = { 0: "cry" };
   const handleHover = (hoverState: boolean) => {
     setHasStarted(true)
@@ -62,7 +61,7 @@ function Home() {
         <div className="animation">
           {bunnyState === "normal" && <Lottie options={bunnyPleaseOptions} height={300} width={300} />}
           {bunnyState === "cry" && <Lottie options={bunnyCryOptions} height={300} width={300} />}
-          {bunnyState === "yes" && <img src="https://media1.tenor.com/images/cc61916684323653ae5f0bd9a5681f62/tenor.gif?itemid=17186007" height={400} width={400} />}
+          {bunnyState === "yes" && <Lottie options={bunnyYesOptions} height={400} width={400} />}
         </div>
         {bunnyState !== "yes" && <div className="buttons">
           <button onClick={() => setBunnyState("yes")} onMouseEnter={() => setBunnyState("normal")}>Yes</button>
